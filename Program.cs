@@ -1,5 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
-string connectionString = "Data Source=base_test.db;";
+string connectionString = "Data Source=Tienda.db;";
 
 // Crear conexión a la base de datos
 using (SqliteConnection connection = new SqliteConnection(connectionString))
@@ -16,7 +16,7 @@ using (SqliteConnection connection = new SqliteConnection(connectionString))
     }
     
     // Insertar datos
-    string insertQuery = "INSERT INTO productos (nombre, precio) VALUES ('Manzana', 0.50), ('Banana', 0.30)";
+    string insertQuery = "INSERT INTO productos (idProducto,descripcion, precio) VALUES (11,'Manzana', 0.50), (12,'Banana', 0.30)";
             using (SqliteCommand insertCmd = new SqliteCommand(insertQuery, connection))
             {
                 insertCmd.ExecuteNonQuery();
@@ -30,7 +30,7 @@ using (SqliteConnection connection = new SqliteConnection(connectionString))
                 Console.WriteLine("Datos en la tabla 'productos':");
                 while (reader.Read())
                 {
-                    Console.WriteLine($"ID: {reader["id"]}, Nombre: {reader["nombre"]}, Precio: {reader["precio"]}");
+                    Console.WriteLine($"ID: {reader["idProducto"]}, Nombre: {reader["descripcion"]}, Precio: {reader["precio"]}");
                 }
             }
 
